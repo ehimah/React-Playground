@@ -1,7 +1,10 @@
 {
   "name": "react-playground",
+  "description": "A playground for all things react!",
   "version": "0.1.0",
   "private": true,
+  "author": "Ehimah Obuse",
+  "license": "MIT",
   "dependencies": {
     "apollo-boost": "^0.4.3",
     "graphql": "^14.4.2",
