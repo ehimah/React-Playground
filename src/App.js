@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import { StoryList } from './graphql/components/StoryList';
+import { topStories, newStories } from './graphql/queries/hackernews';
+import { fromQuery } from './HoC';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const TopStoriesComponent = fromQuery(
+  'topStories',
+  topStories(20),
+  StoryList,
+  'Top Stories'
+);
+
+const NewStoriesComponent = fromQuery(
+  'newStories',
+  newStories(15),
+  StoryList,
+  'New Stories'
+);
+class App extends Component {
+  render() {
+    return (
+      <React.Fragment>
+        <TopStoriesComponent />
+        <hr />
+        <NewStoriesComponent />
+      </React.Fragment>
+    );
+  }
 }
 
 export default App;
