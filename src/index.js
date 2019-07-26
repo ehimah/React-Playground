@@ -6,6 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
 
+import { HttpLink } from 'apollo-link-http';
 let client = new ApolloClient({ uri: 'https://www.graphqlhub.com/graphql' });
 ReactDOM.render(
   <ApolloProvider client={client}>

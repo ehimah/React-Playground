@@ -1,21 +1,25 @@
 import React, { Component } from 'react';
-import { StoryList } from './graphql/components/StoryList';
+import { ItemList } from './graphql/components/ItemList';
 import { topStories, newStories } from './graphql/queries/hackernews';
 import { fromQuery } from './HoC';
 
+const topStoriesMapDataToProps = ({ hn: { topStories } }) => topStories;
+
 const TopStoriesComponent = fromQuery(
-  'topStories',
+  topStoriesMapDataToProps,
   topStories(20),
-  StoryList,
-  'Top Stories'
+  ItemList,
+  { title: 'Top Stories', key: 'topStories' }
 );
 
+const newStoriesMapDataToProps = ({ hn: { newStories } }) => newStories;
 const NewStoriesComponent = fromQuery(
-  'newStories',
+  newStoriesMapDataToProps,
   newStories(15),
-  StoryList,
-  'New Stories'
+  ItemList,
+  { title: 'New Stories', key: 'newStories' }
 );
+
 class App extends Component {
   render() {
     return (

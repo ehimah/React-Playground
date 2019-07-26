@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import StoryList from './StoryList';
+import ItemList from './ItemList';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<StoryList />, div);
+  ReactDOM.render(<ItemList />, div);
+  ReactDOM.unmountComponentAtNode(div);
 });
