@@ -1,7 +1,7 @@
 import React from 'react';
 import { Query } from 'react-apollo';
 
-export const fromQuery = (mapDataToProps, query, Component, { key }) =>
+export const fromQuery = (mapDataToProps, query, Component, { key, title }) =>
   class extends React.Component {
     render() {
       return (
@@ -10,7 +10,7 @@ export const fromQuery = (mapDataToProps, query, Component, { key }) =>
             if (loading) return <h1>Loading...</h1>;
             if (error) return <h1>Error occured while loading...</h1>;
             const props = mapDataToProps(data);
-            return <Component data={props} />;
+            return <Component title={title} data={props} />;
           }}
         </Query>
       );
