@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { ItemList } from './graphql/components/ItemList';
 import { topStories, newStories } from './graphql/queries/hackernews';
 import { fromQuery } from './HoC';
+import LoadingSpinner from './redux/components/LoadingSpinner';
+import ActionButtons from './redux/components/ActionButtons';
+import StateCanvas from './redux/components/StateCanvas';
 
 const topStoriesMapDataToProps = ({ hn: { topStories } }) => topStories;
 
@@ -23,11 +26,24 @@ const NewStoriesComponent = fromQuery(
 class App extends Component {
   render() {
     return (
-      <React.Fragment>
-        <TopStoriesComponent />
+      <div className='container'>
+        {/* <TopStoriesComponent />
         <hr />
-        <NewStoriesComponent />
-      </React.Fragment>
+        <NewStoriesComponent /> */}
+        <div className='row align-items-center'>
+          <div className='col'>
+            <LoadingSpinner />
+          </div>
+        </div>
+        <div className='row align-items-center'>
+          <div className='col'>
+            <ActionButtons />
+          </div>
+          <div className='col'>
+            <StateCanvas />
+          </div>
+        </div>
+      </div>
     );
   }
 }
